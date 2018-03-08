@@ -3,22 +3,35 @@
 
 $(function() {
 
-  $("#fileUpload").submit(function(e) {
-    var formData;
-    formData = new FormData();
-    formData.append("file", $("#fileSelector")[0].files[0]);
-    $.ajax({
-      url : 'http://localhost:8080/file/', //assumes that RMS is running on localhost:8080; adjust this accordingly.
-      data : formData,
-      processData : false,
-      type : 'PUT',
-      contentType : 'multipart/form-data',
-      mimeType: 'multipart/form-data',
-      success: function(data) {
-        console.log(data);
-      }
-    });
+  $(".startUpload").click(function(e) {
+    var fileName = $("#fileSelector")[0].value.split("\\").pop();
+    $("#fileUpload").attr("action", "http://localhost:8080/file/"+fileName+"/");
+    $("#fileUpload").submit();
     e.preventDefault();
   });
+
+  
+
+  // $("#fileUpload").submit(function(e) {
+  //   var formData;
+  //   formData = new FormData();
+  //   formData.append("file", $("#fileSelector")[0].files[0]);
+  //   var fileName = $("#fileSelector")[0].value.split("\\").pop();
+  //   $.ajax({
+  //     url : 'http://localhost:8080/file/'+fileName+'/', //assumes that RMS is running on localhost:8080; adjust this accordingly.
+  //     data : formData,
+  //     processData : false,
+  //     type : 'PUT',
+  //     contentType : 'multipart/form-data',
+  //     mimeType: 'multipart/form-data',
+  //     xhrFields : {
+  //       withCredentials : true
+  //     },
+  //     success: function(data) {
+  //       console.log(data);
+  //     }
+  //   });
+  //   e.preventDefault();
+  // });
 
 });
