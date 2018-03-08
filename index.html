@@ -23,6 +23,32 @@
   <body>
     <h1>Prepare to file!</h1>
 
+    <form id="fileUpload">
+      <div class="form-group">
+        <label for="fileSelector">Select a File</label>
+        <input type="file" class="form-control-file" id="fileSelector" />
+        <small id="fileSelectorHelp" class="form-text text-muted">Please select a file to upload.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- GUIDING PRINCIPLES:
+      Frontend:
+
+      Build a frontend for the above API that is a single page application, consisting of
+
+      a file selector field to select the file to upload,
+      a Send button that calls the API endpoint,
+      a table that displays the returned data.
+
+      General Guidelines:
+
+      Do write code that you would be happy delivering to a paying client.
+      Evaluation will be based on application design, test coverage and readability of the code.
+      You are free to use any 3rd party libraries, but if you do so, you must provide an automated build file, that includes all dependencies, compiles your code, and runs the tests.
+      Submit your solution as a Github repository, that contains small, incremental commits with descriptive commit messages. Include some form of README on how to run the application / service.
+    -->
+
     <!-- pulling in jquery and bootstrap files from their respective CDNs -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
