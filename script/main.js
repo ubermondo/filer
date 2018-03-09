@@ -1,5 +1,35 @@
 // local javascript file - DO NOT CHANGE MAIN.MIN.JS. Instead, make changes here in main.js and compress into main.min.js.
 
+var getFileInfo = function(fileName) {
+  var fileUrl = "./demo/test.json"; //'http://localhost:8080/file/'+fileName in the actual server instance
+  $.getJSON(fileUrl)
+    .done(function(data) {
+      console.log("Upload successful:");
+      console.log(data);
+      showFileInfo(data);
+    })
+    .fail(function(jqXHR, textStatus, error) {
+      console.log("Upload failed - "+textStatus+", "+error+":");
+      console.log(jqXHR);
+    });
+}
+
+var showFileInfo = function(fileInfo) {
+  if (fileInfo.hasOwnProperty("filename") && fileInfo.hasOwnProperty("total") && fileInfo.hasOwnProperty("words")) {
+    if (!$("#fileInfo").length) {
+      $("body").append('<table id="fileInfo" class="table table-sm table-striped"><thead><tr></tr></thead><tbody></tbody></table>');
+      $.each(["filename", "total", "words"], function(key, value) {
+        $("#fileInfo thead tr").append('<th scope="col">'+value+'</th>');
+      });
+    }
+    $("#fileInfo tbody").append('<tr><td>'+fileInfo.filename+'</td><td>'+fileInfo.total+'</td><td class="fileWords"></td></tr>');
+    var fileWords = [];
+    $.each(fileInfo.words, function(key, value) {
+      fileWords.push('"'+key+'" : '+value);
+    });
+    $("td.fileWords:last").html(fileWords.join(', '));
+  }
+}
 
 $(function() {
 
@@ -15,13 +45,20 @@ $(function() {
       processData : false,
       type : 'GET', //type : 'PUT', //switch GET for PUT when interacting with the actual server
       contentType : 'multipart/form-data',
+      dataType : 'json',
+      jsonp : false,
       mimeType: 'multipart/form-data',
       xhrFields : {
         withCredentials : true
-      },
-      success: function(data) {
-        console.log(data);
       }
+    }).done(function(data) {
+      console.log("Upload successful:");
+      console.log(data);
+      showFileInfo(data);
+    })
+    .fail(function(jqXHR, textStatus, error) {
+      console.log("Upload failed - "+textStatus+", "+error+":");
+      console.log(jqXHR);
     });
     e.preventDefault();
   });
