@@ -9,4 +9,5 @@ Run RMS from its directory ("sbt run") in order to enable the API; there are two
 - GET /file/<filename> Returns stats corresponding to an earlier uploaded file, as a json object with three keys: filename, total and words, where total is the total word count of the text file, and words is an object consisting of counts per word.
 
 NOTES:
-We are using compressed css and js files; do not change script/main.min.js or style/main.min.css. Instead, make your changes in script/main.js and style/main.less and compress/compile them into the appropriate .min.* files.
+- We are using compressed css and js files; do not change script/main.min.js or style/main.min.css. Instead, make your changes in script/main.js and style/main.less and compress/compile them into the appropriate .min.* files.
+- Documentation was generated with JSDoc (https://github.com/jsdoc3/jsdoc). You may access the documentation by going to out/index.html in your browser.
