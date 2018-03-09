@@ -3,35 +3,27 @@
 
 $(function() {
 
-  $(".startUpload").click(function(e) {
+  $("#fileUpload").submit(function(e) {
+    var formData;
+    formData = new FormData();
+    formData.append("file", $("#fileSelector")[0].files[0]);
     var fileName = $("#fileSelector")[0].value.split("\\").pop();
-    $("#fileUpload").attr("action", "http://localhost:8080/file/"+fileName+"/");
-    $("#fileUpload").submit();
+    $.ajax({
+      //url : 'http://localhost:8080/file/'+fileName+'/', //assumes that RMS is running on localhost:8080; adjust this accordingly.
+      url : './demo/test.json', //this is the URL of the simulated response
+      data : formData,
+      processData : false,
+      type : 'GET', //type : 'PUT', //switch GET for PUT when interacting with the actual server
+      contentType : 'multipart/form-data',
+      mimeType: 'multipart/form-data',
+      xhrFields : {
+        withCredentials : true
+      },
+      success: function(data) {
+        console.log(data);
+      }
+    });
     e.preventDefault();
   });
-
-  
-
-  // $("#fileUpload").submit(function(e) {
-  //   var formData;
-  //   formData = new FormData();
-  //   formData.append("file", $("#fileSelector")[0].files[0]);
-  //   var fileName = $("#fileSelector")[0].value.split("\\").pop();
-  //   $.ajax({
-  //     url : 'http://localhost:8080/file/'+fileName+'/', //assumes that RMS is running on localhost:8080; adjust this accordingly.
-  //     data : formData,
-  //     processData : false,
-  //     type : 'PUT',
-  //     contentType : 'multipart/form-data',
-  //     mimeType: 'multipart/form-data',
-  //     xhrFields : {
-  //       withCredentials : true
-  //     },
-  //     success: function(data) {
-  //       console.log(data);
-  //     }
-  //   });
-  //   e.preventDefault();
-  // });
 
 });

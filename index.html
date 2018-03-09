@@ -23,16 +23,14 @@
   <body>
     <h1>Prepare to file!</h1>
 
-    <form id="fileUpload" method="PUT" target="formResults">
+    <form id="fileUpload">
       <div class="form-group">
         <label for="fileSelector">Select a File</label>
         <input type="file" class="form-control-file" id="fileSelector" />
         <small id="fileSelectorHelp" class="form-text text-muted">Please select a file to upload.</small>
       </div>
-      <a class="btn btn-primary startUpload" href="#" role="button">Upload</a>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-    <iframe id="formResults"></iframe>
 
     <!-- GUIDING PRINCIPLES:
       Frontend:
