@@ -21,16 +21,37 @@
 
   </head>
   <body>
-    <h1>Prepare to file!</h1>
 
-    <form id="fileUpload">
-      <div class="form-group">
-        <label for="fileSelector">Select a File</label>
-        <input type="file" class="form-control-file" id="fileSelector" />
-        <small id="fileSelectorHelp" class="form-text text-muted">Please select a file to upload.</small>
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Prepare to File!</h1>
+          <p>
+            Upload a file to see the processed file data. <em>This example uses a simulated backend; generated from <a href="./demo/test.txt" target="_blank">this text file</a> and <a href="./demo/test.json" target="_blank">this json file</a>.</em>
+          </p>
+          <form id="fileUpload">
+            <div class="form-group">
+              <label for="fileSelector">Select a File</label>
+              <input type="file" class="form-control-file" id="fileSelector" />
+              <small id="fileSelectorHelp" class="form-text text-muted">Please select a file to upload.</small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Upload</button>
+          </form>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+
+      <div class="container">
+        <div id="tableHolder" class="row"></div>
+        <hr />
+      </div>
+
+    </main>
+
+    <footer class="container">
+      <p>Thank you for your consideration.</p>
+    </footer>
 
     <!-- This demonstration uses a simulated backend; you are welcome to upload any file you like, but the files used during development can be found at demo/test.txt and demo/test.json -->
 

@@ -17,7 +17,7 @@ var getFileInfo = function(fileName) {
 var showFileInfo = function(fileInfo) {
   if (fileInfo.hasOwnProperty("filename") && fileInfo.hasOwnProperty("total") && fileInfo.hasOwnProperty("words")) {
     if (!$("#fileInfo").length) {
-      $("body").append('<table id="fileInfo" class="table table-sm table-striped"><thead><tr></tr></thead><tbody></tbody></table>');
+      $("#tableHolder").html('<table id="fileInfo" class="table table-sm table-striped"><thead><tr></tr></thead><tbody></tbody></table>');
       $.each(["filename", "total", "words"], function(key, value) {
         $("#fileInfo thead tr").append('<th scope="col">'+value+'</th>');
       });
